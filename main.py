@@ -178,7 +178,10 @@ class SignUpHandler(webapp2.RequestHandler):
     
     
 
+<<<<<<< HEAD
     
+=======
+>>>>>>> d76bc2c3b2c9470578fdf10d32dbcf5b905209d0
     def post(self):
         user = users.get_current_user()
         
@@ -198,6 +201,7 @@ class SignUpHandler(webapp2.RequestHandler):
                   
     
 app = webapp2.WSGIApplication([
+<<<<<<< HEAD
 
     ('/', HomePage),
     ('/upcoming', UpcomingHandler),
@@ -210,3 +214,13 @@ app = webapp2.WSGIApplication([
 ], debug=True)
 
 
+=======
+    ('/', HomePage),
+    ('/allmemes', AllMemesHandler), 
+    ('/usermemes', UserMemesHandler), #line 83
+    ('/login', LoginHandler), # should use this rdr
+    ('/register', RegistrationHandler),# should use this rdr
+    ('/', EnterInfoHandler)
+], debug=True)
+
+>>>>>>> d76bc2c3b2c9470578fdf10d32dbcf5b905209d0
