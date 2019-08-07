@@ -18,15 +18,31 @@ def checkLoggedInAndRegistered(request):
     if not user: 
         request.redirect("/login") #ask to login,if not redirect 
         return
+        welcome_template = the_jinja_env.get_template('templates/index.html')
+        self.response.write(welcome_template.render())
+    
+#class Upcoming(webapp2.RequestHandler):
+    
+    
+    
+    
+    
+#class AddEvents(webapp2.RequestHandler):
+
     
     # Check if user is registered
        
     email_address = user.nickname()
     registered_user = CssiUser.query().filter(CssiUser.email == email_address).get() #EventUser
     
+
     if not registered_user:
          request.redirect("/register") #useful if not registered goes to rdr
          return 
+
+    
+#class Map(webapp2.RequestHandler):
+    
     
 
 class HomePage(webapp2.RequestHandler):
@@ -112,6 +128,47 @@ class RegistrationHandler(webapp2.RequestHandler):
         }
         
         self.response.write(registration_template.render(the_variable_dict))
+#class Calendar(webapp2)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+>>>>>>> f73ee8a691b92dfb6bf2043bd1fec601d25e9d36
     
     def post(self):
         user = users.get_current_user()
@@ -132,9 +189,15 @@ class RegistrationHandler(webapp2.RequestHandler):
                   
     
 app = webapp2.WSGIApplication([
+<<<<<<< HEAD
     ('/', HomeHandler),
     ('/allmemes', AllMemesHandler), 
     ('/usermemes', UserMemesHandler), #line 83
     ('/login', LoginHandler), # should use this rdr
     ('/register', RegistrationHandler)# should use this rdr
 ], debug=True)
+=======
+    ('/', EnterInfoHandler)
+], debug=True)
+
+>>>>>>> f73ee8a691b92dfb6bf2043bd1fec601d25e9d36
