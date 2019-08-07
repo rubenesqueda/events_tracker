@@ -168,8 +168,7 @@ class RegistrationHandler(webapp2.RequestHandler):
     
     
     
->>>>>>> f73ee8a691b92dfb6bf2043bd1fec601d25e9d36
-    
+
     def post(self):
         user = users.get_current_user()
         
@@ -189,15 +188,11 @@ class RegistrationHandler(webapp2.RequestHandler):
                   
     
 app = webapp2.WSGIApplication([
-<<<<<<< HEAD
-    ('/', HomeHandler),
+    ('/', HomePage),
     ('/allmemes', AllMemesHandler), 
     ('/usermemes', UserMemesHandler), #line 83
     ('/login', LoginHandler), # should use this rdr
-    ('/register', RegistrationHandler)# should use this rdr
-], debug=True)
-=======
+    ('/register', RegistrationHandler),# should use this rdr
     ('/', EnterInfoHandler)
 ], debug=True)
 
->>>>>>> f73ee8a691b92dfb6bf2043bd1fec601d25e9d36
