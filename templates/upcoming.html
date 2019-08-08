@@ -16,7 +16,13 @@
   border-bottom: 1px solid white; 
   
 }
-
+.event-div{
+      width: 600px;
+      height: 300px;
+      background-size: cover;
+      text-align: center;
+      position: relative;
+      }
 .navbar a {
   display: grid;
   background-color: black;
@@ -44,13 +50,28 @@
   <h4>Events</h4>
 </div>
 
-<div class="navbar">
-  <a href="#">Event</a>
-  <a href="#">Event</a>
-  <a href="#">Event</a>
-  <a href="#">Event</a>
-  <a href="#">Event</a>
-</div>
+
+   {% for event in all_events %}
+    
+        <div class="event-div" style="background: green;">
+          <h2 id="name">{{event.name}}</h2>
+          <h2 id="date">{{event.date}}</h2>
+          <h2 id="description">{{event.short_description}}</h2>
+          <h2 id="location">{{event.location}}</h2>
+          
+        </div>
+        <br> <br>
+    
+    {% endfor %}
+
+
+<!--<div class="navbar">-->
+<!--  <a href="#">Event</a>-->
+<!--  <a href="#">Event</a>-->
+<!--  <a href="#">Event</a>-->
+<!--  <a href="#">Event</a>-->
+<!--  <a href="#">Event</a>-->
+<!--</div>-->
 
 
 </body>

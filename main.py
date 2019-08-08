@@ -80,14 +80,14 @@ class UpcomingHandler(webapp2.RequestHandler):
         
         
         
-        all_events = Event.query().fetch() #modify
+        all_events = Event.query().order(Event.date)  #fetch() #modify
         
         the_variable_dict = {
             "all_events": all_events
         }
         
-        all_memes_template = the_jinja_env.get_template('templates/upcoming.html')
-        self.response.write(all_memes_template.render(the_variable_dict))
+        all_events = the_jinja_env.get_template('templates/upcoming.html')
+        self.response.write(all_events.render(the_variable_dict))
 
 class UserEventsHandler(webapp2.RequestHandler): #imporatnt line 137 keeps user stuff
     def get(self):
