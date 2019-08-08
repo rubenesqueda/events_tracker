@@ -4,6 +4,7 @@ import os
 from models import Event, Event_User 
 from google.appengine.api import users
 from google.appengine.ext import ndb
+from datetime import datetime
 
 
 the_jinja_env = jinja2.Environment(
@@ -55,24 +56,22 @@ class HomePageHandler(webapp2.RequestHandler):
         welcome_template = the_jinja_env.get_template('templates/index.html')
         self.response.write(welcome_template.render(the_variable_dict))
 
-    def post(self):
-        checkLoggedInAndRegistered(self)
+    # def post(self):
+    #     checkLoggedInAndRegistered(self)
         
-        user = users.get_current_user()
+    #     user = users.get_current_user()
         
-        event = Event(
-            name=self.request.get('event-name'), 
-            short_description=self.request.get('short-description'),
-            date=self.request.get('event-date'),
-            age_range=self.request.get('age-range'),
-            location=self.request.get('event-location')
+    #     event = Event(
+    #         name=self.request.get('event-name'), 
+    #         short_description=self.request.get('short-description'),
+    #         date=self.request.get('event-date'),
+    #         age_range=self.request.get('age-range'),
+    #         location=self.request.get('event-location')
             
-        )
-        event_key = event.put()
-        self.response.write("Meme created: " + str(event_key) + "<br>")
-        self.response.write("<a href='/upcoming'>All Events</a> | ")
-        self.response.write("<a href='/user_events'>My events</a>")
+    #     )
+    #     event_key = event.put()
         
+    #     self.redirect('/')
 
 
 class UpcomingHandler(webapp2.RequestHandler):
@@ -112,7 +111,25 @@ class AddEventsHandler(webapp2.RequestHandler):
     def get(self):
         add_template = the_jinja_env.get_template('templates/add_events.html')
         self.response.write(add_template.render())
-
+    
+    
+    
+    
+    def post(self):
+        checkLoggedInAndRegistered(self)
+        
+        user = users.get_current_user()
+        
+        event = Event(
+            name=self.request.get('event-name'), 
+            short_description=self.request.get('short-description'),
+            date=datetime.strptime(self.request.get('event-date'), '%Y-%m-%d'),
+            age_range=self.request.get('age-range'),
+            location=self.request.get('event-location')
+        )
+        event_key = event.put()
+        
+        self.redirect('/')
 
 
 class SignInHandler(webapp2.RequestHandler):
