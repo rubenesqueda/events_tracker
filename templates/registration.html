@@ -1,16 +1,45 @@
 <html>
-    <head>
-        
-    </head>
     <body>
-        Welcome to our site, {{email_address}}!  Please sign up! <br>
+    <head>
+        <style>
+        body{
+            background-color: black;
+        }
+            .first_name {
+  display: grid;
+  background-color: #3B6182;
+  color: black;
+  text-align: center;
+  padding: 20px 10px;
+  border-bottom: 1px solid black ;
+  size:"35";
+  
+}
+.last_name {
+  display: grid;
+  background-color: #3B6182;
+  color: black;
+  text-align: center;
+  padding: 20px 10px;
+  border-bottom: 1px solid black ;
+  size:"35";
+  
+}
+        </style>
+    </head>
+    
+        <font color = "white"> Welcome to our site, {{email_address}}!  Please sign up!</font color> <br>
         
         <form method="post" action="/signup">
         <br>
-        First name: <input type="text" name="first_name">
-        <br>
+        <div class= "first_name" >
+            First name: <input type="text" name="first_name">
+            <br>
+        </div>
+        <div class= "last_name">
         Last name: <input type="text" name="last_name">
         <br>
+        </div>
         <input type="submit">
         </form>
     </body>
