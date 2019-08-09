@@ -159,8 +159,11 @@ class ShowMapHandler(webapp2.RequestHandler):
         self.response.write(event.location)
         
         myDict = {
-            "address_from_python_dict": event.location
-            
+            "address_from_python_dict": event.location,
+            "date_from_python_dict": event.date,
+            "name_from_python_dict": event.name,
+            "description_from_python_dict": event.short_description,
+            "age_from_python_dict": event.age_range
         }
         # myDict2 = {
         #     "date_from_python_dict": event.date,
@@ -210,9 +213,9 @@ class SignUpHandler(webapp2.RequestHandler):
         )
         
         event_user.put()
-        
+    
         self.response.write('Thanks for signing up, %s! <br><a href="/">Home</a>' %
-        event_user.first_name)
+         event_user.first_name)
         # event = Event(
         #     name=self.request.get('event-name'), 
         #     date=self.request.get('event-date'),

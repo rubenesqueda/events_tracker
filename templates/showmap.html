@@ -5,7 +5,9 @@
   body{
     color: white;
   }
-  
+  #name{
+    border-bottom: 2px solid white;
+  }
 </style>
   <!-- Getting the Google Maps API script -->
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -32,13 +34,19 @@
 </head>
 
 <body>
-<!--<body style="background-color:black;">-->
+<body style="background-color:black;">
   <div id="general_container">
     <div>Address: {{address_from_python_dict}}</div>
     <br>
     <div id="map-container">
       <div id="map-canvas"></div>
+      
     </div>
+    <div id = "name"><center><font size="6">{{name_from_python_dict}}</font></center></div>
+    <div><center><font size = "4">DATE: {{date_from_python_dict}}</font></center></div>
+    <div><center><font size = "4">Address: {{address_from_python_dict}}</font></center></div>
+    <div><center><font size = "4">Description: {{description_from_python_dict}}</font></center></div>
+    <div><center><font size = "4">Ages: {{age_from_python_dict}}</font></center></div>
   </div>
 <body>
 </html>
