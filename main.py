@@ -1,6 +1,8 @@
 import webapp2
 import jinja2
 import os
+import logging
+import time
 from models import Event, Event_User 
 from google.appengine.api import users
 from google.appengine.ext import ndb
@@ -11,6 +13,16 @@ the_jinja_env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
+    
+    
+    
+class CoordsRequest(ndb.Model):
+    lat = ndb.StringProperty(required = True)
+    lon = ndb.StringProperty(required = True)
+    timestamp = ndb.DateTimeProperty(auto_now_add = True)
+class AddressRequest(ndb.Model):
+    address = ndb.StringProperty(required = True)
+    timestamp = ndb.DateTimeProperty(auto_now_add = True)
 
 def checkLoggedInAndRegistered(request):
     # Check if user is logged in
@@ -41,7 +53,9 @@ def isRegistered():
     
     return registered_user
     
-#class Map(webapp2.RequestHandler):
+        
+
+    
     
     
 
@@ -84,7 +98,11 @@ class UpcomingHandler(webapp2.RequestHandler):
         
         the_variable_dict = {
             "all_events": all_events
-        }
+        } 
+        
+        # the_address_dict = {
+        #     "address_from_python_dict": all_events.location
+        # }
         
         all_events = the_jinja_env.get_template('templates/upcoming.html')
         self.response.write(all_events.render(the_variable_dict))
@@ -131,7 +149,30 @@ class AddEventsHandler(webapp2.RequestHandler):
         
         self.redirect('/')
 
-
+class ShowMapHandler(webapp2.RequestHandler):
+    
+    def get(self):
+        
+        event_id = self.request.get("id")
+        
+        event = Event.get_by_id(int(event_id))
+        self.response.write(event.location)
+        
+        myDict = {
+            "address_from_python_dict": event.location
+            
+        }
+        # myDict2 = {
+        #     "date_from_python_dict": event.date,
+        #     "name_from_python_dict": event.name,
+        #     "description_from_python_dict": event.short_description,
+        #     "age_from_python_dict": event.age_range
+        # }
+        template = the_jinja_env.get_template('templates/showmap.html')
+        self.response.write(template.render(myDict))
+        
+        
+    
 class SignInHandler(webapp2.RequestHandler):
     def get(self):
         checkLoggedInAndRegistered(self)
@@ -215,9 +256,9 @@ app = webapp2.WSGIApplication([
     ('/', HomePageHandler),
     ('/upcoming', UpcomingHandler),
     ('/add_events', AddEventsHandler),
-    #('/maps', MapsHandler),
     ('/user_events', UserEventsHandler), #line 83
-    ('/sign_in', SignInHandler), # should use this rdr
+    ('/sign_in', SignInHandler),
+    ('/showmap', ShowMapHandler),# should use this rdr
     ('/signup', SignUpHandler)# should use this rdr
 ], debug=True)
 

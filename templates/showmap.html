@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+  body{
+    color: white;
+  }
+  
+</style>
   <!-- Getting the Google Maps API script -->
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   
   
   
   <!-- Getting the jQuery script You will need to activate the API and get your own key from appengine.google.com -->
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUrO7z0Wdse0iXo8zXGeonOkxKUDaxoIU"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0Ifc5B_XI-xauWfVIKvPxBffXRCyzwyQ"></script>
   <!-- This is our script -->
   
+  
+  <script>
+    var address = "{{address_from_python_dict}}"; 
+    console.log("address: ", address);
+  </script>
   
   <script type="text/javascript" src="scripts/script.js"></script>
   <!-- And finally our script -->
@@ -19,20 +30,11 @@
   <link type="text/css" rel="stylesheet" href="styles/style.css"/>
   
 </head>
+
 <body>
+<!--<body style="background-color:black;">-->
   <div id="general_container">
-    <div class="center_text">Let's use the google API</div>
-    <div id="form_container">
-      
-      
-      <form method="post" id="address_form" class="user_form">
-        <label>Or would you prefer to use an address?</label><input id="address" name="address" type="text"/>
-        <input name="submit_button" type="submit" id="address_submit" class="submit_btn"/>
-      </form>
-    
-    </div>
-    
-    
+    <div>Address: {{address_from_python_dict}}</div>
     <br>
     <div id="map-container">
       <div id="map-canvas"></div>
