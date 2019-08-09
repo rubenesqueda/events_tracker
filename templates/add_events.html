@@ -1,25 +1,107 @@
 <!DOCTYPE html>
 <html>
    <body>
-      <head>
-         <title></title>
-      </head>
+       <head>
+<title>Add Event</title>
+<style>
+.header{
+   font-size: 2.5em;
+   padding: 10px;
+   text-align: center;
+   background: black;
+   color: white;
+}
+
+.eventname {
+  display: grid;
+  background-color: #3B6182;
+  color: white;
+  text-align: center;
+  padding: 20px 10px;
+  border-bottom: 1px solid black ;
+  size:"35";
+  
+}
+.eventdate {
+  display: grid;
+  background-color: #3B6182;
+  color: white;
+  text-align: center;
+  padding: 20px 10px;
+  border-bottom: 1px solid black ;
+}
+.eventaddress {
+  display: grid;
+  background-color: #3B6182;
+  color: white;
+  text-align: center;
+  padding: 20px 10px;
+  border-bottom: 1px solid black ;
+}
+.eventdate {
+  display: grid;
+  background-color: #3B6182;
+  color: white;
+  text-align: center;
+  padding: 20px 10px;
+  border-bottom: 1px solid black ;
+} 
+.eventage {
+  display: grid;
+  background-color: #3B6182;
+  color: white;
+  text-align: center;
+  padding: 20px 10px;
+  border-bottom: 1px solid black ;
+} 
+#sumbitbutton {
+    width: 150px;  height: 200px;
+}
+</style>
+</head>
       <div class="header">
           <h4>Events</h4>
       </div>
-          <form method=POST action="/add_events">
-         Event Name:<br> <input type="text" name="event-name">
+      
+      <form method=POST action="/add_events">
+          
+      <div class= "eventname">
+         Event Name:<input type="text" name="event-name">
          <br>
-         Event Date:<br> <input type="date" name="event-date">
+      </div>
+      <div class= "eventdate">
+         Event Date: <input type="Date" name="event-date">
          <br>
-         Event Address:<br> <input type="text" name="event-location">
+      </div>
+      <div class= "eventaddress">
+         Event Address: <input type="text" name="event-location">
          <br>
-         Short Event Description:<br> <input type="text" name="short-description">
+      </div>
+      <div class= "eventdate">
+         Short Event Description: <input type="text" name="short-description">
          <br>
-         Age Range:<br> <input type="text" name="age-range">
+      </div>
+      <div class= "eventage">
+         Age Range: <input type="text" name="age-range">
          <br>
+      </div>   
+   
          
-         <input type="submit" vaule="Go!">
-      </form>
+      <input type="submit" vaule="Go!">
+   </form>
+      <!--    <form method=POST action="/add_events">-->
+      <!--   Event Name:<br> <input type="text" name="event-name">-->
+      <!--   <br>-->
+      <!--   Event Date:<br> <input type="date" name="event-date">-->
+      <!--   <br>-->
+      <!--   Event Address:<br> <input type="text" name="event-location">-->
+      <!--   <br>-->
+      <!--   Short Event Description:<br> <input type="text" name="short-description">-->
+      <!--   <br>-->
+      <!--   Age Range:<br> <input type="text" name="age-range">-->
+      <!--   <br>-->
+         
+      <!--   <input type="submit" vaule="Go!">-->
+      <!--</form>-->
    </body>
 </html>
