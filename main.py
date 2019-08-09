@@ -214,7 +214,7 @@ class SignUpHandler(webapp2.RequestHandler):
         
         event_user.put()
     
-        self.response.write('Thanks for signing up, %s! <br><a href="/">Home</a>' %
+        self.response.write('<style>body{background-color: black;}</style><h1><center><font color=  white>Thanks for signing up, %s!</font color></center></h1> <br><font size = 5><center> <a href="/"  style ="color: #98AFC7" >HOME</a> </center></font>' %
          event_user.first_name)
         # event = Event(
         #     name=self.request.get('event-name'), 
